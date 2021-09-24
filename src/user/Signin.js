@@ -21,11 +21,18 @@ const Signin = () => {
 
     const clickSubmit = event => {
         event.preventDefault();
+        // if (!email || !password) {
+        //     setValues({ ...values, loading: false, redirectToReferrer: false });
+
+        //     return
+        // }
+
         setValues({ ...values, error: false, loading: true });
         signin({ email, password })
             .then(data => {
-                if (data.error) {
-                    setValues({ ...values, error: data.error, loading: false })
+                console.log('Dataa >>', data);
+                if (data.err) {
+                    setValues({ ...values, error: data.err, loading: false })
                 } else {
                     authenticate(data, () => {
                         setValues({
@@ -93,7 +100,7 @@ const Signin = () => {
             {signUpForm()}
             {redirectUser()}
         </Layout>
-       
+
     );
 };
 

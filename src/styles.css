@@ -1,9 +1,14 @@
 /* 
 * border radius
 */
+html,body{
+  overflow-x: hidden;
+}
 
-.btn, .jumbotron, nav :hover{
-    border-radius: 0px;
+.btn,
+.jumbotron,
+nav :hover {
+  border-radius: 0px;
 }
 
 /* cart badge */
@@ -17,178 +22,199 @@
     background: rgb(66, 193, 252);
 } */
 
-.super-cart{
-    border-radius: 50%;
-    background-color: rgb(141, 141, 253);
-    padding: 0 5px;
+.super-cart {
+  border-radius: 50%;
+  background-color: rgb(141, 141, 253);
+  padding: 0 5px;
 }
 
 /**
  * single product page - product name
  */
 
- .name {
-    background: indigo;
-    color: #fff;
-    font-weight: bold;
+.name {
+  background: indigo;
+  color: #fff;
+  font-weight: bold;
 }
 
 /* black shade form 10-1 */
 .black-10 {
-    background: #f2f2f2;
+  background: #f2f2f2;
 }
 .black-9 {
-    background: #e6e6e6;
+  background: #e6e6e6;
 }
 .black-8 {
-    background: #d9d9d9;
+  background: #d9d9d9;
 }
 .black-7 {
-    background: #cccccc;
+  background: #cccccc;
 }
 .black-6 {
-    background: #bfbfbf;
+  background: #bfbfbf;
 }
 .black-5 {
-    background: #b3b3b3;
+  background: #b3b3b3;
 }
 
 /* 
 * product image on card
 */
-.product-img{
-    height: 300px;;
+.product-img {
+  height: 300px;
 }
 
-.product-img >img{
- height: 100%;
- width: 100%;
+.product-img > img {
+  height: 100%;
+  width: 100%;
 }
-.jumbotron h2{
-    margin-top: -20px;
-}
-
-.card{
-    height: 300px;
-    width: 250px;
-    margin-left: 21px;
-    margin-top: 1rem;
-    margin-bottom: 2rem;
-    overflow: hidden;
-}
-.card-header{
-    background-color: #fde611;
-}
-.card-buttons{
-    text-align: center;
-    display: block;
-    position: absolute;
-    top: 100%;
-    left: 100%;
-    transform: translateX(-50%);
-    transition: all 0.3s ease-in-out;
-    background-color: #f8e004;
-    border-radius: 100%;
-    width: 80px;
-    height: 80px;
+.jumbotron h2 {
+  margin-top: -20px;
 }
 
-.card-buttons>button{
-    background: transparent;
-    border: 0px;
+.card {
+  text-align: center;
+  height: 300px;
+  width: 250px;
+  margin-left: 21px;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  overflow: hidden;
+  margin: auto;
+}
+.card-header {
+  background-color: #fde611;
+}
+.card-buttons {
+  text-align: center;
+  display: block;
+  position: absolute;
+  top: 100%;
+  left: 100%;
+  transform: translateX(-50%);
+  transition: all 0.3s ease-in-out;
+  background-color: #f8e004;
+  border-radius: 100%;
+  width: 80px;
+  height: 80px;
 }
 
-.card-body{
-    padding: 0px;
-    overflow: hidden;
-    
+.card-buttons > button {
+  background: transparent;
+  border: 0px;
 }
 
-.card-body:hover .product-img>img{
-    opacity: 0.5;
+.card-body {
+  padding: 0px;
+  overflow: hidden;
 }
 
-.card-body:hover .card-buttons{
-    top: 85%;
-    left: 94%;
+.card-body:hover .product-img > img {
+  opacity: 0.5;
 }
 
-.fa-cart-plus, .fa-trash{
-    margin-top: 8px;
-    margin-left: -15px;
-    color: white;
-}
-.fa-trash{
-    color: red;
+.card-body:hover .card-buttons {
+  top: 85%;
+  left: 94%;
 }
 
-.qty .input-group{
-    width: 125px;
+.fa-cart-plus,
+.fa-trash {
+  margin-top: 8px;
+  margin-left: -15px;
+  color: white;
 }
-.qty{
-    position: absolute;
-    bottom: 0%;
-}
-
-.cart-inline{
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
+.fa-trash {
+  color: red;
 }
 
-.row{
-    justify-content: center;
+.qty .input-group {
+  width: 125px;
+}
+.qty {
+  position: absolute;
+  bottom: 0%;
+}
+
+.cart-inline {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.row {
+  justify-content: center;
+}
+
+#purchaseHistory {
+  width: 100%;
+  height: 100%;
+  /* margin-right: 20%; */
 }
 
 .jumbotron {
-    width: 30wh;
-    height: 30vh;
-    color: #fff;
-    background: linear-gradient(-45deg, #ee7752, #f70289, #1d05f5, #04f825, #eb0404, #fde611);
-    background-size: 400% 400%;
-    -webkit-animation: Gradient 15s ease infinite;
-    -moz-animation: Gradient 15s ease infinite;
-    animation: Gradient 12s ease infinite;
+  width: 30wh;
+  height: 30vh;
+  color: #fff;
+  background: linear-gradient(
+    -45deg,
+    #ee7752,
+    #f70289,
+    #1d05f5,
+    #04f825,
+    #eb0404,
+    #fde611
+  );
+  background-size: 400% 400%;
+  -webkit-animation: Gradient 15s ease infinite;
+  -moz-animation: Gradient 15s ease infinite;
+  animation: Gradient 12s ease infinite;
 }
 
 @-webkit-keyframes Gradient {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 @-moz-keyframes Gradient {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 @keyframes Gradient {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
-@media only screen and (max-width: 600px){
-    .jumbotron h2{
-        margin-top: 10px;
-    }
+@media only screen and (max-width: 600px) {
+  .jumbotron h2 {
+    margin-top: 10px;
+  }
+  .row {
+    display: block;
+    margin: auto;
+    width: 100%;
+  }
 }

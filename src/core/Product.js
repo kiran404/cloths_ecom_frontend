@@ -3,10 +3,26 @@ import Layout from './Layout';
 import { read, listRelated } from './apiCore';
 import Card from './Card';
 
+import ProductSlider from './Slider';
+import { getProducts } from './apiCore';
+
 const Product = props => {
     const [product, setProduct] = useState({});
     const [relatedProduct, setRelatedProduct] = useState([]);
     const [error, setError] = useState(false);
+    const [productsBySell, setProductsBySell] = useState([]);
+
+
+    const loadProductsBySell = () => {
+        getProducts('sold')
+            .then(data => {
+                if (data.error) {
+                    setError(data.error);
+                } else {
+                    setProductsBySell(data);
+                }
+            });
+    };
 
     const loadSingleProduct = productId => {
         read(productId)
@@ -31,6 +47,7 @@ const Product = props => {
     useEffect(() => {
         const productId = props.match.params.productId;  // due to react router dom
         loadSingleProduct(productId);
+        loadProductsBySell();
     }, [props])
 
     return (
@@ -41,10 +58,17 @@ const Product = props => {
         >
             <h2 className="mb-3">{product.name}</h2>
             <div className="row">
-                <div className="col-8">
-                    {product && product.description && <Card product={product} showViewProductButton={false} />}
+                <div className="col">
+                    {/* <div className="row"> */}
+                    <span className="col" style={{ float: 'left' }}>
+
+                        {product && product.description && <Card product={product} showViewProductButton={false} />}
+                    </span>
+                    <span className="col">
+                        {product.description}
+                    </span>
                 </div>
-                <div className="col-4">
+                <div className="col">
                     <h4>People also Likes</h4>
                     {relatedProduct.map((p, i) => (
                         <div className="mb-3" key={i}>

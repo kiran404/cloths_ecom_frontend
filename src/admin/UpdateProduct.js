@@ -9,7 +9,6 @@ const UpdateProduct = ({ match }) => {
         name: '',
         description: '',
         price: '',
-        categories: [],
         category: '',
         shipping: '',
         quantity: '',
@@ -18,7 +17,8 @@ const UpdateProduct = ({ match }) => {
         error: false,
         createdProduct: '',
         redirectToProfile: false,
-        formData: ''
+        categories: []
+        // formData: ''
     });
     const [categories, setCategories] = useState([]);
 
@@ -35,7 +35,7 @@ const UpdateProduct = ({ match }) => {
         error,
         createdProduct,
         redirectToProfile,
-        formData
+        // formData
     } = values;
 
     const init = productId => {
@@ -44,6 +44,7 @@ const UpdateProduct = ({ match }) => {
                 setValues({ ...values, error: data.error });
             } else {
                 // populate the state
+
                 setValues({
                     ...values,
                     name: data.name,
@@ -52,8 +53,9 @@ const UpdateProduct = ({ match }) => {
                     category: data.category._id,
                     shipping: data.shipping,
                     quantity: data.quantity,
-                    formData: new FormData()
+                    // formData = new FormData()
                 });
+
                 // load categories
                 initCategories();
             }
@@ -77,13 +79,34 @@ const UpdateProduct = ({ match }) => {
 
     const handleChange = name => event => {
         const value = name === 'photo' ? event.target.files[0] : event.target.value;
-        formData.set(name, value);
+        // formData.set(name, value,);
+        // setValues({ ...values, formData, [name]: value });
         setValues({ ...values, [name]: value });
     };
 
     const clickSubmit = event => {
         event.preventDefault();
+        // console.log(values);
         setValues({ ...values, error: '', loading: true });
+
+        let formData = new FormData()
+        // let {
+        //     photo,
+        //     loadingphoto,
+        //     errorphoto,
+        //     createdProductphoto,
+        //     redirectToProfilephoto,
+        //     categoriesphoto,
+        //     ...prd
+        // } = values
+        let prd = ['name', 'description', 'price', 'category', 'quantity', 'photo', 'shipping']
+        prd.forEach(key => {
+            if (values[key]) {
+                formData.set(`${key}`, values[key])
+            }
+        })
+
+        console.log(prd);
 
         updateProduct(match.params.productId, user._id, token, formData).then(data => {
             if (data.error) {
@@ -131,7 +154,7 @@ const UpdateProduct = ({ match }) => {
 
             <div className="form-group">
                 <label className="text-muted">Category</label>
-                <select onChange={handleChange('category')} className="form-control">
+                <select onChange={handleChange('category')} className="form-control" value={category}>
                     <option>Please select</option>
                     {categories &&
                         categories.map((c, i) => (
@@ -144,10 +167,11 @@ const UpdateProduct = ({ match }) => {
 
             <div className="form-group">
                 <label className="text-muted">Shipping</label>
-                <select onChange={handleChange('shipping')} className="form-control">
+                {console.log('Shh', shipping)}
+                <select onChange={handleChange('shipping')} className="form-control" value={shipping}>
                     <option>Please select</option>
-                    <option value="0">No</option>
-                    <option value="1">Yes</option>
+                    <option value={false}>No</option>
+                    <option value={true}>Yes</option>
                 </select>
             </div>
 

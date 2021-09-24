@@ -64,7 +64,7 @@ const Dashboard = () => {
 
     const purchaseHistory = history => {
         return (
-            <div className="card mb-5">
+            <div className="card mb-5" id="purchaseHistory">
                 <h3 className="card-header">Purchase history</h3>
                 <ul className="list-group">
                     <li className="list-group-item">
@@ -104,11 +104,14 @@ const Dashboard = () => {
             className="container-fluid"
         >
             <div className="row">
-                <div className="col-3">{userLinks()}</div>
-                <div className="col-9">
+                <div className="col">{userLinks()}</div>
+                <div className="col">
                     {userInfo()}
-                    {purchaseHistory(history)}
+                    
                 </div>
+            </div>
+            <div>
+                {purchaseHistory(history)}
             </div>
         </Layout>
     );
