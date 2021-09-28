@@ -22,9 +22,10 @@ const Menu = ({ history }) => (   // destruct
             </Link>
         
         <ol className="breadcrumb">
-            <li className="breadcromb-item"><Link className="waves-effect mr-3" to='/'>Home </Link></li>
-            <li className="breadcromb-item"><Link className="waves-effect mr-3" to='/'> Special Offer </Link></li>
-            <li className="breadcromb-item active"><Link className="waves-effect" to='/'> E-commerce </Link></li>
+            <li className=""><Link className="" to='/'>Home </Link></li>
+            
+            {/* <li className="breadcromb-item"><Link className="waves-effect mr-3" to='/'> Special Offer </Link></li>
+            <li className="breadcromb-item active"><Link className="waves-effect" to='/'> E-commerce </Link></li> */}
         </ol>
 
 

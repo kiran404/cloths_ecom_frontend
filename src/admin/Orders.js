@@ -94,9 +94,8 @@ const Orders = () => {
     return (
         <Layout
             title="Orders"
-            description={`G'day ${
-                user.name
-            }, you can manage all the orders here`}
+            description={`G'day ${user.name
+                }, you can manage all the orders here`}
             className="container-fluid"
         >
             <div className="row">
@@ -130,12 +129,16 @@ const Orders = () => {
                                         Ordered by: {o.user.name}
                                     </li>
                                     <li className="list-group-item">
+                                        Phone Number: {o.phone}
+                                    </li>
+                                    <li className="list-group-item">
                                         Ordered on:{" "}
                                         {moment(o.createdAt).fromNow()}
                                     </li>
                                     <li className="list-group-item">
                                         Delivery address: {o.address}
                                     </li>
+
                                 </ul>
 
                                 <h3 className="mt-4 mb-4 font-italic">

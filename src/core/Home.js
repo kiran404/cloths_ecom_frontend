@@ -11,7 +11,7 @@ const Home = () => {
     const [productsBySell, setProductsBySell] = useState([]);
     const [productsByArrival, setProductsByArrival] = useState([]);
     const [error, setError] = useState(false);
-    
+
 
     const loadProductsBySell = () => {
         getProducts('sold')
@@ -45,12 +45,12 @@ const Home = () => {
     return (
         <Layout title="Welcome To K-Market" description="Shopping is Free but Products are not" className="container-fluid">
             <Search />
-            <ProductSlider products={productsBySell}/>
+            <ProductSlider products={productsBySell} />
 
-            <h2 className="">New Arrivals</h2>
+            <h2 className="mb-4">New Arrivals</h2>
             <div className="row">
                 {productsByArrival.map((product, i) => (
-                    <div key={i}>
+                    <div key={i} className="col-3 mb-3">
                         <Card product={product} />
                     </div>
                 ))}

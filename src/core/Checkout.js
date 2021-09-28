@@ -40,6 +40,10 @@ const Checkout = ({ products, setRun = f => f, run = undefined }) => {
         setData({ ...data, address: event.target.value });
     };
 
+    const handlePhone = event => {
+        setData({ ...data, phone: event.target.value });
+    };
+
     const getTotal = () => {
         return products.reduce((currentValue, nextValue) => {
             return currentValue + nextValue.count * nextValue.price;
@@ -58,6 +62,7 @@ const Checkout = ({ products, setRun = f => f, run = undefined }) => {
         );
     };
     let deliveryAddress = data.address;
+    let phone = data.phone;
 
     const buy = () => {
         setData({ loading: true });
@@ -91,7 +96,8 @@ const Checkout = ({ products, setRun = f => f, run = undefined }) => {
                             products: products,
                             transaction_id: response.transaction.id,
                             amount: response.transaction.amount,
-                            address: deliveryAddress
+                            address: deliveryAddress,
+                            phone: phone
                         };
 
                         createOrder(userId, token, createOrderData)
@@ -127,7 +133,14 @@ const Checkout = ({ products, setRun = f => f, run = undefined }) => {
             {data.clientToken !== null && products.length > 0 ? (
                 <div>
                     <div className="gorm-group mb-3">
-                        <input type="number" maxLength="10" placeholder="Mobile Number" className="number"/>
+                        <input type="number"
+                            minLength="10"
+                            maxLength="10"
+                            onChange={handlePhone}
+                            placeholder="Mobile Number"
+                            className="form-control"
+                            value={data.phone}
+                        />
                         <hr />
                         <label className="text-muted">Delivery address:</label>
                         <textarea
