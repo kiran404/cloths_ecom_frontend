@@ -20,6 +20,7 @@ const AddProduct = () => {
         redirectToProfile: false,
         formData: ''
     })
+    const sizeArr = ["S", "M", "L", "XL", "XXL"];
 
     const { user, token } = isAuthenticated()
 
@@ -134,6 +135,14 @@ const AddProduct = () => {
             <div className="form-group">
                 <label className="text-muted">Quantity</label>
                 <input onChange={handleChange('quantity')} type="number" className="form-control" value={quantity} />
+            </div>
+
+            <div className="form-group">
+                <label className="text-muted">Sizes: </label>
+                {sizeArr.map(s => (
+                    <span><input type="checkbox" id={s} name={s} value={s} />  <label for="s">{s }</label> </span>
+                ))}
+
             </div>
 
             <button className="btn btn-outline-primary">Create Product</button>

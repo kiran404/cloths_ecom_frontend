@@ -1,7 +1,9 @@
 /* 
 * border radius
 */
-html,body{
+html,
+body {
+  /* overflow-x: scroll; */
   overflow-x: hidden;
 }
 
@@ -73,18 +75,38 @@ nav :hover {
   margin-top: -20px;
 }
 
-.card {
+.roller{
+  /* max-height: 100px; */
+}
+
+.card1{
   text-align: center;
-  height: 300px;
-  width: 250px;
+ 
   margin-left: 21px;
   margin-top: 1rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   overflow: hidden;
   margin: auto;
 }
+.cardBig{
+  height: 250px;
+  width: 200px;
+}
+.cardSmall{
+  height: 300px;
+  width: 250px;
+}
+.card {
+  text-align: center;
+
+  margin-left: 21px;
+  margin-top: 1rem;
+  margin-bottom: 5rem;
+  overflow: hidden;
+  /* margin: auto; */
+}
 .card-header {
-  background-color: #fde611;
+  background-color: #d3d3d3;
 }
 .card-buttons {
   text-align: center;
@@ -94,7 +116,7 @@ nav :hover {
   left: 100%;
   transform: translateX(-50%);
   transition: all 0.3s ease-in-out;
-  background-color: #f8e004;
+  background-color: #d3d3d3;
   border-radius: 100%;
   width: 80px;
   height: 80px;
@@ -112,6 +134,7 @@ nav :hover {
 
 .card-body:hover .product-img > img {
   opacity: 0.5;
+  height: 100%;
 }
 
 .card-body:hover .card-buttons {
@@ -137,6 +160,12 @@ nav :hover {
   bottom: 0%;
 }
 
+.sizes {
+  position: absolute;
+  bottom: 50px;
+  cursor: pointer;
+}
+
 .cart-inline {
   display: flex;
   justify-content: space-around;
@@ -151,6 +180,33 @@ nav :hover {
   width: 100%;
   height: 100%;
   /* margin-right: 20%; */
+}
+
+.orderTable {
+  width: 100%;
+}
+.tableHead {
+  text-align: center;
+}
+table th {
+  min-width: 130px;
+}
+table td {
+  text-align: center;
+}
+.order-buttons {
+  margin-right: 15px;
+  background: rgba(28, 2, 102, 0.8); 
+}
+.orderButton{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.order-buttons:hover {
+  width: max-content;
+  /* background: black; */
 }
 
 .jumbotron {

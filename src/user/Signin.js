@@ -27,12 +27,13 @@ const Signin = () => {
         //     return
         // }
 
-        setValues({ ...values, error: false, loading: true });
+        // setValues({ ...values, error: false, loading: true });
+        setValues({ ...values, loading: true });
         signin({ email, password })
             .then(data => {
                 console.log('Dataa >>', data);
-                if (data.err) {
-                    setValues({ ...values, error: data.err, loading: false })
+                if (data.error) {
+                    setValues({ ...values, error: data.error, loading: false })
                 } else {
                     authenticate(data, () => {
                         setValues({

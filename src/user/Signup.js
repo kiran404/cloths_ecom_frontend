@@ -20,10 +20,12 @@ const Signup = () => {
 
     const clickSubmit = event => {
         event.preventDefault();
-        setValues({ ...values, error: false });
+        // setValues({ ...values, error: false });
         signup({ name, email, password })
             .then(data => {
+                console.log(data);
                 if (data.error) {
+
                     setValues({ ...values, error: data.error, success: false })
                 } else {
                     setValues({
@@ -63,7 +65,7 @@ const Signup = () => {
 
     const showError = () => (
         <div className="alert alert-danger" style={{ display: error ? '' : 'none' }}>
-            {error}
+            {error && error.slice(error.lastIndexOf(":") + 1, error.length)}
         </div>
     )
 

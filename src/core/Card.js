@@ -6,6 +6,7 @@ import { addItem, updateItem, removeItem } from './cartHelpers';
 
 const Card = ({
     product,
+    main,
     showViewProductButton = true,
     showAddToCartButton = true,
     cartUpdate = false,
@@ -16,6 +17,7 @@ const Card = ({
 }) => {
     const [redirect, setRedirect] = useState(false);
     const [count, setCount] = useState(product.count);
+    const [size, setSize] = useState(product.count);
 
     const showViewButton = showViewProductButton => {
         return (
@@ -51,29 +53,81 @@ const Card = ({
         return quantity > 0 ? (
             <span className="badge badge-primary badge-pill">In Stock </span>
         ) : (
-                <span className="badge badge-primary badge-pill">Out of Stock </span>
-            );
+            <span className="badge badge-primary badge-pill">Out of Stock </span>
+        );
     };
 
-    const handleChange = productId => event => {
+    // const handleChange = productId => event => {
+    //     setRun(!run); // run useEffect in parent Cart
+    //     setCount(event.target.value < 1 ? 1 : event.target.value);
+    //     if (event.target.value >= 1) {
+    //         updateItem(productId, event.target.value);
+    //     }
+
+    // };
+    const handleChange = (productId, count, size) => {
         setRun(!run); // run useEffect in parent Cart
-        setCount(event.target.value < 1 ? 1 : event.target.value);
-        if (event.target.value >= 1) {
-            updateItem(productId, event.target.value);
-        }
+        setCount(count < 1 ? 1 : count);
+        setSize(size);
+
+        updateItem(productId, count, size);
+
     };
+
+    // const showCartUpdateOptions = cartUpdate => {
+    //     return (
+    //         cartUpdate && (
+    //             <div className="qty">
+    //                 <div className="input-group mb-3">
+    //                     <div className="input-group-prepend">
+    //                         <span className="input-group-text">Qty.</span>
+    //                     </div>
+    //                     <input type="number" className="form-control" value={count} onChange={handleChange(product._id)} />
+    //                 </div>
+    //             </div>
+    //         )
+    //     );
+    // };
+
+
 
     const showCartUpdateOptions = cartUpdate => {
+        // console.log(main)
         return (
+
             cartUpdate && (
-                <div className="qty">
-                    <div className="input-group mb-3">
-                        <div className="input-group-prepend">
-                            <span className="input-group-text">Qty.</span>
+                <>
+                    {/* <div className="sizes">
+                        <div className="input-group mb-3">
+                            <div className="input-group-prepend">
+                                <span className="input-group-text">Sizes</span>
+                            </div> */}
+                            {/* <input type="text" className="form-control" value={count} onChange={handleChange(product._id)} /> */}
+                            {/* {product?.sizes?.length ?
+                                <select>
+                                    {product?.sizes?.map(size => {
+                                        return <option onChange={(event) => handleChange(product._id, -1, event.target.value)}>{size}</option>
+                                    })}
+
+                                </select>
+                                :
+                                <select>
+                                    <option onChange={(event) => handleChange(product._id, -1, event.target.value)}>M</option>
+                                </select>
+                            }
                         </div>
-                        <input type="number" className="form-control" value={count} onChange={handleChange(product._id)} />
+                    </div> */}
+
+
+                    <div className="qty">
+                        <div className="input-group mb-3">
+                            <div className="input-group-prepend">
+                                <span className="input-group-text">Qty.</span>
+                            </div>
+                            <input type="number" className="form-control" value={count} onChange={(event) => handleChange(product._id, event.target.value, "M")} />
+                        </div>
                     </div>
-                </div>
+                </>
             )
         );
     };
@@ -93,7 +147,7 @@ const Card = ({
         );
     };
     return (
-        <div className="card">
+        <div className={main == 'True' ? 'card cardBig' : 'card cardSmall'}>
             <div className="card-header card-header-1"><span className="float-left">{product.name}</span><span className="float-right">Rs.{product.price}/-</span></div>
             <div className="card-body">
                 <Link to={`/product/${product._id}`} className="mr-2">
@@ -108,6 +162,7 @@ const Card = ({
                 </div>
                 {showCartUpdateOptions(cartUpdate)}
             </div>
+            
         </div>
     );
 };

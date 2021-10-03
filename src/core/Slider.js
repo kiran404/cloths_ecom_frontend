@@ -10,22 +10,48 @@ const ProductSlider = ({ products }) => {
     const settings = {
         dots: true,
         infinite: true,
-        slidesToShow: 4,
+        slidesToShow: 5,
         slidesToScroll: 1,
-        autoplay: true,
+        autoplay: false,
         speed: 1000,
         autoplaySpeed: 2000,
-        cssEase: "linear"
+        cssEase: "linear",
+
+        responsive: [{
+            breakpoint: 1300,
+            settings: {
+                slidesToShow: 4,
+                slidesToScroll: 2,
+                initialSlide: 2
+            }
+        },
+        {
+            breakpoint: 800,
+            settings: {
+                slidesToShow: 3,
+                slidesToScroll: 1,
+                initialSlide: 2
+            }
+        },
+        {
+            breakpoint: 500,
+            settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                initialSlide: 2
+            }
+        }
+        ]
     };
 
     return (
-        <div style={{ width: "100%" }}>
+        <div className="roller" style={{ width: "100%" }}>
             {/* <h2> Products </h2> */}
 
-            <Slider {...settings}>
+            <Slider {...settings} >
                 {products.map((product, i) => (
                     <div key={i} className="mb-3 ">
-                        <Card product={product} />
+                        <Card product={product} main='True' />
                     </div>
                 ))}
             </Slider>

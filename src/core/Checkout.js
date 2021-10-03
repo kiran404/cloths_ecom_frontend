@@ -13,7 +13,8 @@ const Checkout = ({ products, setRun = f => f, run = undefined }) => {
         clientToken: null,
         error: '',
         instance: {},
-        address: ''
+        address: '',
+        btndis: '',
     });
 
     const userId = isAuthenticated() && isAuthenticated().user._id;
@@ -42,6 +43,19 @@ const Checkout = ({ products, setRun = f => f, run = undefined }) => {
 
     const handlePhone = event => {
         setData({ ...data, phone: event.target.value });
+
+        if (event.target.value.length < 10) {
+            setData({ ...data, error: 'Phone Number is Invalid', btndis: true });
+        }
+        if (event.target.value.length == 10) {
+            setData({ ...data,phone: event.target.value, error: '', btndis: false });
+
+        }
+        if (event.target.value.length > 10) {
+            setData({ ...data, error: 'Invalid Phone Number', btndis: true });
+        }
+        
+        
     };
 
     const getTotal = () => {
@@ -57,7 +71,7 @@ const Checkout = ({ products, setRun = f => f, run = undefined }) => {
             <div>{showDropIn()}</div>
         ) : (
             <Link to="/signin">
-                <button className="btn btn-primary">Sign in to checkout</button>
+                <button className="btn btn-primary" >Sign in to checkout</button>
             </Link>
         );
     };
@@ -66,6 +80,9 @@ const Checkout = ({ products, setRun = f => f, run = undefined }) => {
 
     const buy = () => {
         setData({ loading: true });
+
+
+
         // send the nonce to your server
         // nonce = data.instance.requestPaymentMethod()
         let nonce;
@@ -132,14 +149,15 @@ const Checkout = ({ products, setRun = f => f, run = undefined }) => {
         <div onBlur={() => setData({ ...data, error: '' })}>
             {data.clientToken !== null && products.length > 0 ? (
                 <div>
-                    <div className="gorm-group mb-3">
+                    <div className="form-group mb-3">
                         <input type="number"
-                            minLength="10"
-                            maxLength="10"
+
+                            // maxLength="10"
                             onChange={handlePhone}
                             placeholder="Mobile Number"
                             className="form-control"
                             value={data.phone}
+                            required
                         />
                         <hr />
                         <label className="text-muted">Delivery address:</label>
@@ -161,7 +179,7 @@ const Checkout = ({ products, setRun = f => f, run = undefined }) => {
                         }}
                         onInstance={instance => (data.instance = instance)}
                     />
-                    <button onClick={buy} className="btn btn-success btn-block">
+                    <button onClick={buy} className="btn btn-success btn-block" onChange={handlePhone} disabled={data.btndis} >
                         Pay
                     </button>
                 </div>
