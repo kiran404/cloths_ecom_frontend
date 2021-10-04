@@ -65,6 +65,9 @@ nav :hover {
 */
 .product-img {
   height: 300px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .product-img > img {
@@ -106,7 +109,7 @@ nav :hover {
   /* margin: auto; */
 }
 .card-header {
-  background-color: #d3d3d3;
+  background-color: #928eac;
 }
 .card-buttons {
   text-align: center;
@@ -273,4 +276,22 @@ table td {
     margin: auto;
     width: 100%;
   }
+}
+
+
+.orderTable th{
+    background-color: rgb(65, 65, 65);
+    height: 20px;
+    padding: 0px 10px;
+    color:white;
+    font-weight: 200;
+}
+
+.orderTable tr{
+  text-align: center;
+  vertical-align: middle;
+}
+
+.orderTable .mainTr:nth-child(odd){
+  background-color: rgb(196, 196, 196);
 }

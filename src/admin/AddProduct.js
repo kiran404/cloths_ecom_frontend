@@ -137,13 +137,13 @@ const AddProduct = () => {
                 <input onChange={handleChange('quantity')} type="number" className="form-control" value={quantity} />
             </div>
 
-            <div className="form-group">
+            {/* <div className="form-group">
                 <label className="text-muted">Sizes: </label>
                 {sizeArr.map(s => (
                     <span><input type="checkbox" id={s} name={s} value={s} />  <label for="s">{s }</label> </span>
                 ))}
 
-            </div>
+            </div> */}
 
             <button className="btn btn-outline-primary">Create Product</button>
         </form>

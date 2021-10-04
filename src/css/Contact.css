@@ -1,4 +1,4 @@
-body{
+/* body{
   height: 100vh;
 }
 .contact-container{
@@ -67,8 +67,8 @@ body{
 #contactform .btn:hover {
   background: rgba(51, 51, 51, 0.7);
 }
-#map-canvas {
-  width: 100%;
+#map-canvas { */
+  /* width: 100%;
   height: 135px;
   margin-bottom: 15px;
   border: 2px solid #fff;
@@ -80,4 +80,36 @@ body{
     flex: 0 0 41.666667%;
     max-width: 83%;
  }
+} */
+
+.container{
+
 }
+
+.content{
+  height: 30vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.cardContainer{
+  display: flex;
+  
+  justify-content: space-around;
+}
+
+.cardContent{
+  padding: 40px;
+  background-color: rgb(226, 226, 226);
+  text-align: center;
+  max-width: 400px;
+}
+
+
+
+.cardContent .title{
+  font-size: 20px;
+}
+

@@ -6,6 +6,7 @@ import { listOrders, getStatusValues, updateOrderStatus } from "./apiAdmin";
 import { getProducts } from '../core/apiCore';
 import moment from "moment";
 import Search from "../core/Search";
+import ShowImage from '../core/ShowImage';
 
 
 const Orders = () => {
@@ -75,6 +76,7 @@ const Orders = () => {
                 type="text"
                 value={value}
                 className=""
+                size="7"
                 readOnly
             />
         </span>
@@ -111,46 +113,55 @@ const Orders = () => {
 
     const TableShow = (props) => {
         return (
-            <table className="orderTable" border="1">
-                <tr className="tableHead">
-                    <th>Transaction ID</th>
-                    <th>Amount</th>
-                    <th>Ordered By</th>
-                    <th>Phone</th>
-                    <th>Ordered on</th>
-                    <th>Delivery Address</th>
-                    <th>Product </th>
-                    <th>Delivery Status</th>
+            <div className="row">
+                <div className="m-10">
+                    <table className="orderTable" >
+                        <tr className="tableHead">
+                            {/* <th>Transaction ID</th> */}
+                            {/* <th>Amount</th> */}
+                            <th>S.N</th>
+                            <th>Ordered By</th>
+                            <th>Phone</th>
+                            <th>Product Uploaded</th>
+                            <th>Ordered on</th>
+                            <th>Delivery Address</th>
+                            <th>Product </th>
+                            <th>Delivery Status</th>
 
-                </tr>
-                {orders.filter(o => o.status == props.status).map((o, oIndex) => {
-                    return (
-                        <tr>
-                            <td>  {o.transaction_id} </td>
-                            <td> ${o.amount} </td>
-                            <td> {o.user.name} </td>
-                            <td> {o.phone} </td>
-                            <td> {moment(o.createdAt).fromNow()} </td>
-                            <td> {o.address} </td>
-                            <td>
-                                {o.products.map((p, pIndex) => (
-                                    <span>
-                                        <tr>
-                                            <td> {showInput("Name", p.name)}</td>
-                                            <td>{showInput("Price", p.price)}</td>
-                                        </tr>
-                                    </span>
-                                ))}
-                            </td>
-                            <td>{showStatus(o)}</td>
                         </tr>
-                    );
-                })}
-                {console.log(orders)}
+                        {orders.filter(o => o.status == props.status).map((o, oIndex) => {
+                            return (
+                                <tr className='mainTr'>
+                                    {/* <td>  {o.transaction_id} </td> */}
+                                    {/* <td> ${o.amount} </td> */}
+                                    <td> {oIndex + 1} </td>
+
+                                    <td> {o.user.name} </td>
+                                    <td> {o.phone} </td>
+                                    <td> {o.createdAt.slice(0, 19).replace('T', ' ')} </td>
+                                    <td> {moment(o.createdAt).fromNow()} </td>
+                                    <td> {o.address} </td>
+                                    <td>
+                                        {o.products.map((p, pIndex) => (
+                                            <span>
+                                                <tr>
+                                                    <td> {showInput("Name", p.name)}</td>
+                                                    <td>{showInput("Price", p.price)}</td>
+                                                </tr>
+                                            </span>
+                                        ))}
+                                    </td>
+                                    <td>{showStatus(o)}</td>
+                                </tr>
+                            );
+                        })}
+                        {console.log('orders >>>> ', orders)}
 
 
 
-            </table>
+                    </table>
+                </div>
+            </div>
         )
     }
 
@@ -204,34 +215,43 @@ const Orders = () => {
             </div>
 
             <div className="collapse" id="bestSold">
-                <div className="row">
-                    <div className="col">
+                <div className="">
+                    <div className="">
                         <h2 className="mb-4 inline">Best Sellers</h2>
-                        <button className="btn btn-primary order-buttons " type="button" data-toggle="collapse" data-target="#search" aria-expanded="false" aria-controls="collapseExample">
-                            Search
-                        </button>
-                        <table border="1">
+
+                        <table border="1" className="orderTable">
                             <tr>
+                                <th>S.N</th>
+                                <th>Date</th>
                                 <th>Product</th>
                                 <th>Price</th>
                                 <th>Sold</th>
+                                <th>Items Left</th>
+                                <th>Photo</th>
                             </tr>
 
                             {productsBySell.map((product, i) => (
                                 <tr>
+                                    <td> {i}</td>
+                                    <td> {product.updatedAt.slice(0, 19).replace('T', ' ')}</td>
                                     <td> {product.name}</td>
                                     <td> {product.price}</td>
                                     <td>{product.sold}</td>
+                                    <td>{product.quantity}</td>
+                                    <td>
+                                        <button className="btn btn-primary order-buttons " type="button" data-toggle="collapse" data-target={`#a${i}`} aria-expanded="false" aria-controls="collapseExample">
+                                            Show Product Picture
+                                        </button>
+                                        <span className="collapse" id={`a${i}`}>
+                                            <ShowImage item={product} url="product" />
+                                        </span>
+                                    </td>
                                 </tr>
                             ))}
 
                         </table>
                     </div>
-                    <div className="col">
-                        <div className="collapse" id="search">
-                            <Search />
-                        </div>
-                    </div>
+
                 </div>
             </div>
 

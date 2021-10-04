@@ -6,35 +6,29 @@ const Contact = () => (
     <Layout title="Welcome To K-Market" description="Happy To Help" className="container-fluid contact-container">
         <div className="contact" id="contact">
 
-            <div className="col-md-offset-1 col-md-10">
-                <h2>Contact Me<i className="fa fa-paper-plane-o"></i></h2>
-                <div id="map-canvas"></div>
+            <div className=' container'>
+                <div className='content'>
+                    <h1>Style Hunt</h1>
+                    <p>Want to get in touch here is how you can contact us</p>
+                </div>
+
+                <div className='cardContainer'>
+                    <div className='cardContent'>
+
+                        <p className='title'>Talk to sales</p>
+                        <p className='desc'>Get expert insights straight to your inbox, and become a better customer success manager. Subscribe to the Service Blog below.</p>
+                        <p className='desc'>Mail us at<strong>hunt.style@gmail.com</strong></p>
+                        <p>+997 9849173278</p>
+                    </div>
+                    <div className='cardContent'>
+                        <p className='title'>Find Us At</p>
+                        <h3 className='desc'>Inacho 9, Bhaktapur</h3>
+                        <p className='title'>Opposite of <strong>3 Stones Cafe</strong></p>
+                        <p>+997 9860487453</p>
+                    </div>
+                </div>
+
             </div>
-            <h1>Under Development</h1>
-            <form method="post" action="contact.php" name="contactform" id="contactform">
-                <div className="col-md-offset-1 col-md-5 input-width">
-                    <fieldset>
-                        <input name="name" type="text" id="name" size="30" placeholder="Name" />
-                        <br />
-                        <input name="email" type="text" id="email" size="30" placeholder="Email" />
-                        <br />
-                        <input name="phone" type="text" id="phone" size="30" placeholder="Phone" />
-                        <br />
-                        <input name="human" type="text" id="human" size="30" placeholder="Prove your not a robot... What is 2+2?" />
-                        <br />
-                    </fieldset>
-                </div>
-                <div className="col-md-5 input-width">
-                    <fieldset>
-                        <textarea name="comments" cols="40" rows="20" id="comments" placeholder="Message"></textarea>
-                    </fieldset>
-                </div>
-                <div className="col-md-offset-1 col-md-10">
-                    <fieldset>
-                        <button type="submit" className="btn btn-lg" id="submit" value="Submit">Send Message</button>
-                    </fieldset>
-                </div>
-            </form>
 
         </div>
     </Layout>

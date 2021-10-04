@@ -81,9 +81,11 @@ const Dashboard = () => {
                                                 </h6>
                                                 <h6>
                                                     Purchased date:{" "}
-                                                    {moment(
-                                                        p.createdAt
-                                                    ).fromNow()}
+                                                    {/* {moment(p.createdAt).format("ddd")}
+                                                    {moment(p.createdAt).fromNow()}  */}
+                                                    {/* {moment(p.createdAt)..fromNow() */}
+                                                    {moment().startOf('hour').fromNow()}
+
                                                 </h6>
                                             </div>
                                         );
@@ -107,7 +109,7 @@ const Dashboard = () => {
                 <div className="col">{userLinks()}</div>
                 <div className="col">
                     {userInfo()}
-                    
+
                 </div>
             </div>
             <div>
