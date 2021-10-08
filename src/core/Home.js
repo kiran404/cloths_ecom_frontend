@@ -47,7 +47,8 @@ const Home = () => {
             <Search />
             <ProductSlider products={productsBySell} />
 
-            <h2 className="mb-4">New Arrivals</h2>
+            <h1 className="mb-4">New Arrivals<hr /></h1>
+            <strong>Now Available</strong>
             <div className="row">
                 {productsByArrival.map((product, i) => (
                     <div key={i} className="col">
@@ -64,7 +65,7 @@ const Home = () => {
                     </div>
                 ))}
             </div>
-            
+
         </Layout>
     )
 }
